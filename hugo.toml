@@ -1,0 +1,8 @@
+baseURL = "https://cuda-re0.github.io/"
+languageCode = "zh-cn"
+title = "cuda-re0 的算子学习笔记"
+theme = "hugo-book"
+
+[params]
+  BookSection = "posts"
+  BookToC = false

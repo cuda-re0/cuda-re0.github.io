@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr" data-theme="light">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/posts/">
+	<meta property="og:site_name" content="cuda-re0 的算子学习笔记">
+	<meta property="og:title" content="Posts">
+	<meta property="og:locale" content="zh_cn">
+	<meta property="og:type" content="website">
+
+
+	<meta itemprop="name" content="Posts">
+	<meta itemprop="datePublished" content="2026-09-01T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-09-01T00:00:00+00:00">
+
+<title>Posts • cuda-re0 的算子学习笔记</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon.png" sizes="any">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1313/posts/">
+<link rel="stylesheet" href="/book.min.1b2ae15da5c1eaa75138c1fec03e1ccbb20fbeb54a73205101c86d5e87874611.css" integrity="sha256-GyrhXaXB6qdROMH&#43;wD4cy7IPvrVKcyBRAchtXoeHRhE=" crossorigin="anonymous">
+
+
+<script type="module" src="/en.search.min.c9e9f37c39b48ed9474b894d238eca704ac06b71b71e3b55b2e176ef39f45a3f.js" integrity="sha256-yenzfDm0jtlHS4lNI47KcErAa3G3HjtVsuF27zn0Wj8=" crossorigin="anonymous"></script><link rel="alternate" type="application/rss+xml" href="http://localhost:1313/posts/index.xml" title="Posts" />
+
+  
+</head>
+<body dir="ltr" class="book-kind-section book-type-posts">
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>cuda-re0 的算子学习笔记</span>
+  </a>
+</h2>
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text"
+    placeholder="Search"
+    aria-label="Search"
+    maxlength="64" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/posts/004-flashattention%E4%BC%98%E5%8C%96/" class="">
+      FlashAttention优化</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/posts/003-flashattention%E6%8E%A8%E5%AF%BC/" class="">
+      FlashAttention推导</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/posts/002-matmul-%E4%BB%8Enaive%E5%88%B0tiled/" class="">
+      matmul-从naive到tiled</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/posts/005-%E7%8E%A9%E5%85%B7%E7%BC%96%E8%AF%91%E5%99%A8/" class="">
+      玩具编译器</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/posts/007-%E7%94%B3%E8%AF%B7%E5%AD%A3%E5%85%83%E5%8F%99%E4%BA%8B%E5%B8%96/" class="">
+      申请季元叙事帖</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/posts/006-%E9%98%B6%E6%AE%B5%E5%A4%8D%E7%9B%98/" class="">
+      阶段复盘</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/posts/001-%E9%A6%96kernel-vecadd%E4%B8%8E%E7%AC%AC%E4%B8%80%E5%BC%A0benchmark%E8%A1%A8/" class="">
+      首kernel-vecadd与第一张benchmark表</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <input type="checkbox" class="toggle" id="menu-control" />
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Posts</h3>
+
+  <div></div>
+</div>
+
+
+  
+ 
+      </header>
+
+      
+      
+  
+  <article class="book-post markdown">
+    <h2>
+      <a href="/posts/004-flashattention%E4%BC%98%E5%8C%96/">FlashAttention优化</a>
+    </h2>
+    <div class="book-post-container flex gap">
+      <div>
+        
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>September 1, 2026</span>
+  </div>
+
+
+
+  
+
+  
+
+
+        <div class="book-post-content markdown-inner"><p>状态：待写。本篇交付物定义见仓库 README 与博客 about 页排期表。</p></div>
+      </div></div>
+  </article>
+  
+  <article class="book-post markdown">
+    <h2>
+      <a href="/posts/003-flashattention%E6%8E%A8%E5%AF%BC/">FlashAttention推导</a>
+    </h2>
+    <div class="book-post-container flex gap">
+      <div>
+        
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>September 1, 2026</span>
+  </div>
+
+
+
+  
+
+  
+
+
+        <div class="book-post-content markdown-inner"><p>状态：待写。本篇交付物定义见仓库 README 与博客 about 页排期表。</p></div>
+      </div></div>
+  </article>
+  
+  <article class="book-post markdown">
+    <h2>
+      <a href="/posts/002-matmul-%E4%BB%8Enaive%E5%88%B0tiled/">matmul-从naive到tiled</a>
+    </h2>
+    <div class="book-post-container flex gap">
+      <div>
+        
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>September 1, 2026</span>
+  </div>
+
+
+
+  
+
+  
+
+
+        <div class="book-post-content markdown-inner"><p>状态：待写。本篇交付物定义见仓库 README 与博客 about 页排期表。</p></div>
+      </div></div>
+  </article>
+  
+  <article class="book-post markdown">
+    <h2>
+      <a href="/posts/005-%E7%8E%A9%E5%85%B7%E7%BC%96%E8%AF%91%E5%99%A8/">玩具编译器</a>
+    </h2>
+    <div class="book-post-container flex gap">
+      <div>
+        
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>September 1, 2026</span>
+  </div>
+
+
+
+  
+
+  
+
+
+        <div class="book-post-content markdown-inner"><p>状态：待写。本篇交付物定义见仓库 README 与博客 about 页排期表。</p></div>
+      </div></div>
+  </article>
+  
+  <article class="book-post markdown">
+    <h2>
+      <a href="/posts/007-%E7%94%B3%E8%AF%B7%E5%AD%A3%E5%85%83%E5%8F%99%E4%BA%8B%E5%B8%96/">申请季元叙事帖</a>
+    </h2>
+    <div class="book-post-container flex gap">
+      <div>
+        
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>September 1, 2026</span>
+  </div>
+
+
+
+  
+
+  
+
+
+        <div class="book-post-content markdown-inner"><p>状态：待写。本篇交付物定义见仓库 README 与博客 about 页排期表。</p></div>
+      </div></div>
+  </article>
+  
+  <article class="book-post markdown">
+    <h2>
+      <a href="/posts/006-%E9%98%B6%E6%AE%B5%E5%A4%8D%E7%9B%98/">阶段复盘</a>
+    </h2>
+    <div class="book-post-container flex gap">
+      <div>
+        
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>September 1, 2026</span>
+  </div>
+
+
+
+  
+
+  
+
+
+        <div class="book-post-content markdown-inner"><p>状态：待写。本篇交付物定义见仓库 README 与博客 about 页排期表。</p></div>
+      </div></div>
+  </article>
+  
+  <article class="book-post markdown">
+    <h2>
+      <a href="/posts/001-%E9%A6%96kernel-vecadd%E4%B8%8E%E7%AC%AC%E4%B8%80%E5%BC%A0benchmark%E8%A1%A8/">首kernel-vecadd与第一张benchmark表</a>
+    </h2>
+    <div class="book-post-container flex gap">
+      <div>
+        
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>September 1, 2026</span>
+  </div>
+
+
+
+  
+
+  
+
+
+        <div class="book-post-content markdown-inner"><p>状态：待写。本篇交付物定义见仓库 README 与博客 about 页排期表。</p></div>
+      </div></div>
+  </article>
+  
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+  <span>
+  </span>
+  
+  <span>
+  </span>
+</div>
+ 
+        
+  
+ 
+        
+        
+  
+ 
+        
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay" aria-hidden="true"></label>
+    </div>
+
+    
+<aside class="book-toc">
+  <div class="book-toc-content">
+    
+  <nav>
+  <ul>
+  
+    
+    <li class="book-section-flat">
+      <a>Categories</a>
+      <ul>
+      
+      </ul>
+    </li>
+    
+  
+    
+    <li class="book-section-flat">
+      <a>Tags</a>
+      <ul>
+      
+      </ul>
+    </li>
+    
+  
+  </ul>
+</nav>
+
+
+  </div>
+</aside>
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
